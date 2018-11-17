@@ -3,7 +3,7 @@ package MiniProject;
 import java.awt.*;
 
 public class Circle extends Shape {
-    private int r;
+    private int r; // Radius of a circle
 
     Circle(int x, int y, int r) {
         this.x = x;
