@@ -20,6 +20,10 @@ public abstract class Shape implements Serializable {
         return color;
     }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public void move(int dx, int dy) {
         this.x += dx;
         this.y += dy;

@@ -1,111 +1,150 @@
 package MiniProject;
 
-import Supervised.SaveRestoreObjFromFile;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Panel extends JPanel implements KeyListener, MouseListener, MouseMotionListener, Serializable {
-    private final int WIDTH;
-    private final int HEIGHT;
+public class Panel extends JPanel implements Serializable {
+    private final int WIDTH; // Width of a frame
+    private final int HEIGHT; // Height of a frame
 
     /* Modes:
-    0 - Moving
+    0 - Modifying
     1 - Creating
-    1 - Delete
+    2 - Removing
     */
     private int mode = 0;
-    private final int MOVING = 0;
-    private final int CREATING = 1;
-    private final int DELETE = 2;
+    final static int MODIFY = 0;
+    final static int CREATING = 1;
+    final static int REMOVING = 2;
 
     /* Shapes:
     0 - Rectangle
     1 - Circle
     */
     private int shape = 0;
-    private final int RECTANGLE = 0;
-    private final int CIRCLE = 1;
-    private static Color color;
+    final static int RECTANGLE = 0;
+    final static int CIRCLE = 1;
+
+    private Color color; // Main color. New objects will be drew in this color
 
     private int toMove = -1; // Object to move
-    private int onIndex = -1;
+    private int onIndex = -1; // Index of an object that is under the cursor
 
-    private int prevX = -1;
-    private int prevY = -1;
+    private int prevX = -1; // The last position of x
+    private int prevY = -1; // The last position of y
 
-    private ArrayList<Shape> objects = new ArrayList<>();
-    private JFrame colorPicker;
+    private ArrayList<Shape> objects = new ArrayList<>(); // The list of shapes
+    private JFrame colorPicker; // Color picker to pick a color
 
-    Panel(int width, int height) {
+    private Shape chosen = null; // A chosen object to change its color
+
+    public Panel(int width, int height) {
         WIDTH = width;
         HEIGHT = height;
+        color = Color.RED;
 
         colorPicker = new JFrame("Color Picker");
         colorPicker.setSize(200, 200);
         colorPicker.setResizable(false);
-        colorPicker.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        ColorPicker panel = new ColorPicker(color);
-        colorPicker.add(panel);
-        colorPicker.addMouseListener(panel);
+        colorPicker.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Dispose the color picker in the case of closing
+        ColorPicker colorPickerPanel = new ColorPicker(this);
+        colorPicker.add(colorPickerPanel);
+        colorPicker.addMouseListener(colorPickerPanel);
+    }
+
+    public int getMode() {
+        return mode;
+    }
+
+    public int getShape() {
+        return shape;
+    }
+
+    public int getToMove() {
+        return toMove;
+    }
+
+    public int getOnIndex() {
+        return onIndex;
+    }
+
+    public int getPrevX() {
+        return prevX;
+    }
+
+    public int getPrevY() {
+        return prevY;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public JFrame getColorPicker() {
+        return colorPicker;
+    }
+
+    public ArrayList<Shape> getObjects() {
+        return objects;
+    }
+
+    // Change the type of a shape to be drawn to the next one
+    public void nextShape() {
+        shape = (shape + 1) % 2;
+    }
+
+    // Change the mode to the next one
+    public void nextMode() {
+        mode = (mode + 1) % 3;
+    }
+
+    public void setToMove(int toMove) {
+        this.toMove = toMove;
+    }
+
+    public void setOnIndex(int onIndex) {
+        this.onIndex = onIndex;
+    }
+
+    public void setPrevX(int prevX) {
+        this.prevX = prevX;
+    }
+
+    public void setPrevY(int prevY) {
+        this.prevY = prevY;
     }
 
     public void setObjects(ArrayList<Shape> objects) {
         this.objects = objects;
     }
 
-    public static void main(String[] args) {
-        Panel panel = new Panel(640, 480);
-        panel.objects.add(new Rectangle(50, 50, 50, 50, Color.red));
-
-        JFrame jf = new JFrame("Le Paint");
-        jf.setSize(panel.WIDTH, panel.HEIGHT);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf.setResizable(false);
-        jf.setVisible(true);
-
-        jf.add(panel);
-        jf.addKeyListener(panel);
-        jf.addMouseListener(panel);
-        jf.addMouseMotionListener(panel);
-//        panel.paintComponent(panel.getGraphics());
-        panel.repaint();
+    // Set the index-th object to given object
+    public void setObject(int index, Shape obj) {
+        objects.set(index, obj);
     }
 
-    public static void setColor(Color color) {
-        Panel.color = color;
+    // Given an index of an object in list of shapes choose it
+    public void setChosenByIndex(int index) {
+        if (index < objects.size() && index >= 0)
+            chosen = objects.get(index);
+        else
+            chosen = null;
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-//        super.paintComponent(g);
-//        repaint();
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, WIDTH, HEIGHT);
-
-        for (int i = 0; i < objects.size(); i++) {
-            objects.get(i).show(g);
-        }
-
-        if (onIndex != -1 && onIndex < objects.size()) {
-            objects.get(onIndex).stroke(g);
-        }
-
-        g.setColor(Color.BLACK);
-        if (mode == 0) {
-            g.drawString("Moving", 10, 20);
-        } else if (mode == 1) {
-            g.drawString("Creating", 10, 20);
-        } else if (mode == 2) {
-            g.drawString("Delete", 10, 20);
+    public void setColorOfChosen(Color color) {
+        if (chosen != null) {
+            chosen.color = color;
         }
     }
 
-    private int getObjectAt(int x, int y) {
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    // Given the coordinates return an index of an object that is positioned there
+    public int getObjectAt(int x, int y) {
         for (int i = objects.size() - 1; i >= 0; i--) {
             if (objects.get(i).isInside(x, y)) {
                 return i;
@@ -114,150 +153,64 @@ public class Panel extends JPanel implements KeyListener, MouseListener, MouseMo
         return -1;
     }
 
-    @Override
-    public void keyTyped(KeyEvent keyEvent) {
+    public void addObject(Shape shape) {
+        objects.add(shape);
+    }
 
+    // Remove an object given its index
+    public void removeObject(int index) {
+        if (index < objects.size() && index >= 0)
+            objects.remove(index);
+    }
+
+    public static void main(String[] args) {
+        Panel panel = new Panel(640, 480);
+        panel.objects.add(new Rectangle(50, 50, 50, 50, Color.red));
+
+        JFrame jf = new JFrame("Le Paint");
+        jf.setSize(panel.WIDTH, panel.HEIGHT);
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Terminate the program in case of closing
+        jf.setResizable(false);
+        jf.setVisible(true);
+
+        jf.add(panel);
+        jf.addKeyListener(new MyKeyListener(panel));
+        jf.addMouseListener(new MyMouseListener(panel));
+        jf.addMouseMotionListener(new MyMouseMotionListener(panel));
+        panel.repaint();
     }
 
     @Override
-    public void keyPressed(KeyEvent keyEvent) {
-        if (keyEvent.getKeyChar() == 'm' || keyEvent.getKeyChar() == 'M') {
-            mode = (mode + 1) % 3;
-            repaint();
-        } else if (keyEvent.getKeyChar() == 's' || keyEvent.getKeyChar() == 'S') {
-            shape = (shape + 1) % 2;
-        } else if (keyEvent.getKeyChar() == 'c' || keyEvent.getKeyChar() == 'C') {
-            if (colorPicker.isVisible()) {
-                colorPicker.setVisible(false);
-            } else {
-                colorPicker.setVisible(true);
-            }
-        } else if (keyEvent.getKeyChar() == 'z' || keyEvent.getKeyChar() == 'Z') {
-            try {
-                SaveRestoreObjFromFile.saveToFile("project", this);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else if (keyEvent.getKeyChar() == 'x' || keyEvent.getKeyChar() == 'X') {
-            try {
-                Panel panel = (Panel) SaveRestoreObjFromFile.restoreFromFile("project");
-                this.setObjects(panel.objects);
+    protected void paintComponent(Graphics g) {
+        // Draw a background
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, WIDTH, HEIGHT);
 
-                toMove = -1;
-                onIndex = -1;
-                repaint();
-            } catch (ClassNotFoundException | IOException e) {
-                e.printStackTrace();
-            }
+        // Draw all the objects
+        for (Shape object : objects) {
+            object.show(g);
+            if (object == chosen) // If an object is chosen draw a stroke around it
+                object.stroke(g);
         }
-    }
 
-    @Override
-    public void keyReleased(KeyEvent keyEvent) {
-        toMove = -1;
-    }
+        // If cursor is on some object draw a stroke around it
+        if (onIndex != -1 && onIndex < objects.size()) {
+            objects.get(onIndex).stroke(g);
+        }
 
-
-    @Override
-    public void mouseClicked(MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent mouseEvent) {
-        prevX = mouseEvent.getX();
-        prevY = mouseEvent.getY();
-        if (mode == MOVING) {
-            toMove = getObjectAt(prevX, prevY);
+        // Write the name of the mode
+        g.setColor(Color.BLACK);
+        if (mode == MODIFY) {
+            g.drawString("Modifying", 10, 20);
         } else if (mode == CREATING) {
+            g.drawString("Creating", 10, 20);
             if (shape == RECTANGLE) {
-                objects.add(new Rectangle(mouseEvent.getX(), mouseEvent.getY(), 0, 0));
+                g.drawString("Rectangle", 10, 40);
             } else if (shape == CIRCLE) {
-                objects.add(new Circle(mouseEvent.getX(), mouseEvent.getY(), 0));
+                g.drawString("Circle", 10, 40);
             }
-        } else if (mode == DELETE) {
-            int toRemove = getObjectAt(prevX, prevY);
-            if (toRemove != -1) {
-                objects.remove(toRemove);
-            }
-            onIndex = -1;
+        } else if (mode == REMOVING) {
+            g.drawString("Removing", 10, 20);
         }
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent mouseEvent) {
-        if (mode == MOVING) {
-            if (toMove != -1 && toMove < objects.size()) {
-                Shape obj = objects.get(toMove);
-                obj.move(mouseEvent.getX() - prevX, mouseEvent.getY() - prevY);
-                objects.set(toMove, obj);
-            }
-            prevX = mouseEvent.getX();
-            prevY = mouseEvent.getY();
-        } else if (mode == CREATING) {
-            int width = mouseEvent.getX() - prevX;
-            int height = mouseEvent.getY() - prevY;
-            if (shape == RECTANGLE) {
-                if (width >= 0 && height >= 0) {
-                    objects.set(objects.size() - 1, new Rectangle(
-                            prevX, prevY,
-                            width, height, color
-                    ));
-                } else if (width >= 0) {
-                    objects.set(objects.size() - 1, new Rectangle(
-                            prevX, prevY + height,
-                            width, -height, color
-                    ));
-                } else if (height >= 0) {
-                    objects.set(objects.size() - 1, new Rectangle(
-                            prevX + width, prevY,
-                            -width, height, color
-                    ));
-                } else {
-                    objects.set(objects.size() - 1, new Rectangle(
-                            prevX + width, prevY + height,
-                            -width, -height, color
-                    ));
-                }
-            } else {
-                if (width >= 0) {
-                    objects.set(objects.size() - 1, new Circle(
-                            prevX, prevY,
-                            width, color
-                    ));
-                } else {
-                    objects.set(objects.size() - 1, new Circle(
-                            prevX, prevY,
-                            -width, color
-                    ));
-                }
-            }
-
-        }
-
-//        paintComponent(getGraphics());
-        repaint();
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent mouseEvent) {
-        onIndex = getObjectAt(mouseEvent.getX(), mouseEvent.getY());
-//        paintComponent(getGraphics());
-        repaint();
     }
 }
