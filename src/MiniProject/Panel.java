@@ -2,6 +2,8 @@ package MiniProject;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -173,7 +175,7 @@ public class Panel extends JPanel implements Serializable {
         jf.setResizable(false);
         jf.setVisible(true);
 
-        jf.add(panel);
+        jf.add(BorderLayout.CENTER, panel);
         jf.addKeyListener(new MyKeyListener(panel));
         jf.addMouseListener(new MyMouseListener(panel));
         jf.addMouseMotionListener(new MyMouseMotionListener(panel));

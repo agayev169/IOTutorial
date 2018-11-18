@@ -8,7 +8,7 @@ public class Circle extends Shape {
     Circle(int x, int y, int r) {
         this.x = x;
         this.y = y;
-        this.r = r;
+        this.r = Math.abs(r);
     }
 
     Circle(int x, int y, int r, Color color) {

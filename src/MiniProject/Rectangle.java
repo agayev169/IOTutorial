@@ -7,10 +7,20 @@ public class Rectangle extends Shape {
     private int height;
 
     public Rectangle(int x, int y, int width, int height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+        if (width < 0) {
+            this.x = x + width;
+            this.width = -width;
+        } else {
+            this.x = x;
+            this.width = width;
+        }
+        if (height < 0) {
+            this.y = y + height;
+            this.height = -height;
+        } else {
+            this.y = y;
+            this.height = height;
+        }
     }
 
     public Rectangle(int x, int y, int width, int height, Color color) {
