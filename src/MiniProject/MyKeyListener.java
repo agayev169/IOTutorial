@@ -2,8 +2,10 @@ package MiniProject;
 
 import Supervised.SaveRestoreObjFromFile;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 import java.io.IOException;
 
 public class MyKeyListener implements KeyListener {
@@ -33,20 +35,31 @@ public class MyKeyListener implements KeyListener {
         } else if (keyEvent.getKeyChar() == 'z' || keyEvent.getKeyChar() == 'Z') {
             // Save the project with project name
             try {
-                SaveRestoreObjFromFile.saveToFile("project", panel);
+                JFileChooser fc = new JFileChooser();
+                int retVal = fc.showSaveDialog(null);
+
+                if (retVal == JFileChooser.APPROVE_OPTION) {
+                    SaveRestoreObjFromFile.saveToFile(fc.getSelectedFile().getAbsolutePath(), panel);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else if (keyEvent.getKeyChar() == 'l' || keyEvent.getKeyChar() == 'L') {
             // Load the project
             try {
-                Panel loadedPanel = (Panel) SaveRestoreObjFromFile.restoreFromFile("project");
-                panel.setObjects(loadedPanel.getObjects());
+                JFileChooser fc = new JFileChooser();
+                int retVal = fc.showOpenDialog(null);
 
-                // Set indexes to -1 so that there is no problem with moving and stroking
-                panel.setToMove(-1);
-                panel.setOnIndex(-1);
-                panel.repaint();
+                if (retVal == JFileChooser.APPROVE_OPTION) {
+                    Panel loadedPanel = (Panel) SaveRestoreObjFromFile.restoreFromFile(
+                            fc.getSelectedFile().getAbsolutePath());
+                    panel.setObjects(loadedPanel.getObjects());
+
+                    // Set indexes to -1 so that there is no problem with moving and stroking
+                    panel.setToMove(-1);
+                    panel.setOnIndex(-1);
+                    panel.repaint();
+                }
             } catch (ClassNotFoundException | IOException e) {
                 e.printStackTrace();
             }

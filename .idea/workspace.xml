@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f704c467-9a84-4500-80c2-b688b7b12291" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOTutorial/MiniProject/Panel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOTutorial/MiniProject/Panel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOTutorial/MiniProject/Rectangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOTutorial/MiniProject/Rectangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MiniProject/ColorPicker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MiniProject/ColorPicker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MiniProject/MyKeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MiniProject/MyKeyListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MiniProject/MyMouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MiniProject/MyMouseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MiniProject/MyMouseMotionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MiniProject/MyMouseMotionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MiniProject/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MiniProject/Panel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,14 +22,16 @@
     <session id="1649827288">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.28" value="1" />
+          <entry key="project.open.time.40" value="1" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.46" value="1" />
+          <entry key="project.open.time.55" value="1" />
           <entry key="project.open.time.62" value="1" />
           <entry key="project.open.time.67" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -39,12 +48,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="12817" />
+          <entry key="java" value="13008" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="12817" />
+          <entry key="JAVA" value="13008" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -55,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MiniProject/Panel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2565">
-              <caret line="212" column="34" selection-start-line="212" selection-start-column="28" selection-end-line="212" selection-end-column="34" />
+            <state relative-caret-position="564">
+              <caret line="201" column="32" selection-start-line="201" selection-start-column="32" selection-end-line="201" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,8 +88,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MiniProject/MyKeyListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="42" column="56" lean-forward="true" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
+            <state relative-caret-position="261">
+              <caret line="53" column="67" lean-forward="true" selection-start-line="53" selection-start-column="67" selection-end-line="53" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -124,8 +133,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MiniProject/Shape.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="240">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#372#373#0" expanded="true" />
@@ -184,10 +193,10 @@
         <option value="$PROJECT_DIR$/src/MiniProject/Shape.java" />
         <option value="$PROJECT_DIR$/src/MiniProject/Circle.java" />
         <option value="$PROJECT_DIR$/src/MiniProject/MyMouseMotionListener.java" />
-        <option value="$PROJECT_DIR$/src/MiniProject/Panel.java" />
         <option value="$PROJECT_DIR$/src/MiniProject/ColorPicker.java" />
         <option value="$PROJECT_DIR$/src/MiniProject/MyMouseListener.java" />
         <option value="$PROJECT_DIR$/src/MiniProject/Rectangle.java" />
+        <option value="$PROJECT_DIR$/src/MiniProject/Panel.java" />
         <option value="$PROJECT_DIR$/src/MiniProject/MyKeyListener.java" />
       </list>
     </option>
@@ -204,6 +213,7 @@
     <panes>
       <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -232,7 +242,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -303,8 +312,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2659091" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.275" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -313,7 +323,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32919255" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2810559" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2810559" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3993808" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -359,8 +369,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MiniProject/Panel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2565">
-          <caret line="212" column="34" selection-start-line="212" selection-start-column="28" selection-end-line="212" selection-end-column="34" />
+        <state relative-caret-position="564">
+          <caret line="201" column="32" selection-start-line="201" selection-start-column="32" selection-end-line="201" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -404,17 +414,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MiniProject/Circle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MiniProject/Shape.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="240">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#372#373#0" expanded="true" />
@@ -423,10 +426,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/MiniProject/Circle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/MiniProject/MyKeyListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="42" column="56" lean-forward="true" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
+        <state relative-caret-position="261">
+          <caret line="53" column="67" lean-forward="true" selection-start-line="53" selection-start-column="67" selection-end-line="53" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

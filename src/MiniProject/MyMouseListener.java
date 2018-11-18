@@ -15,7 +15,7 @@ public class MyMouseListener implements MouseListener {
         // Set previous coordinates
         panel.setPrevX(mouseEvent.getX());
         panel.setPrevY(mouseEvent.getY());
-        if (panel.getMode() == Panel.MODIFY) {
+        if (panel.getMode() == Panel.MODIFYING) {
             // Set the chosen object and an object to move
             panel.setChosenByIndex(panel.getOnIndex());
             panel.setToMove(panel.getObjectAt(panel.getPrevX(), panel.getPrevY()));

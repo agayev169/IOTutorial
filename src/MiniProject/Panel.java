@@ -15,7 +15,7 @@ public class Panel extends JPanel implements Serializable {
     2 - Removing
     */
     private int mode = 0;
-    public final static int MODIFY = 0;
+    public final static int MODIFYING = 0;
     public final static int CREATING = 1;
     public final static int REMOVING = 2;
 
@@ -200,7 +200,7 @@ public class Panel extends JPanel implements Serializable {
 
         // Write the name of the mode
         g.setColor(Color.BLACK);
-        if (mode == MODIFY) {
+        if (mode == MODIFYING) {
             g.drawString("Modifying", 10, 20);
         } else if (mode == CREATING) {
             g.drawString("Creating", 10, 20);

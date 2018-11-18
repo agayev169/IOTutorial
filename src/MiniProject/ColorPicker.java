@@ -40,7 +40,7 @@ public class ColorPicker extends JPanel implements MouseListener {
         Color color = Color.getHSBColor(mouseEvent.getY() / (float) 200,
                 mouseEvent.getX() / (float) 200,
                 1);
-        if (panel.getMode() == Panel.MODIFY) {
+        if (panel.getMode() == Panel.MODIFYING) {
             panel.setColorOfChosen(color);
         }
         panel.setColor(color);

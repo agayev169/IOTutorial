@@ -13,7 +13,7 @@ public class MyMouseMotionListener implements MouseMotionListener {
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        if (panel.getMode() == Panel.MODIFY) {
+        if (panel.getMode() == Panel.MODIFYING) {
             int toMove = panel.getToMove(); // Index of an object to be moved
             if (toMove >= 0 && toMove < panel.getObjects().size()) { // If there is any object to move then move it
                 Shape obj = panel.getObjects().get(toMove);
