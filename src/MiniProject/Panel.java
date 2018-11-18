@@ -15,17 +15,17 @@ public class Panel extends JPanel implements Serializable {
     2 - Removing
     */
     private int mode = 0;
-    final static int MODIFY = 0;
-    final static int CREATING = 1;
-    final static int REMOVING = 2;
+    public final static int MODIFY = 0;
+    public final static int CREATING = 1;
+    public final static int REMOVING = 2;
 
     /* Shapes:
     0 - Rectangle
     1 - Circle
     */
     private int shape = 0;
-    final static int RECTANGLE = 0;
-    final static int CIRCLE = 1;
+    public final static int RECTANGLE = 0;
+    public final static int CIRCLE = 1;
 
     private Color color; // Main color. New objects will be drew in this color
 

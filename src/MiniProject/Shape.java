@@ -24,7 +24,7 @@ public abstract class Shape implements Serializable {
         this.color = color;
     }
 
-    public void move(int dx, int dy) { 
+    public void move(int dx, int dy) { 	
         this.x += dx;
         this.y += dy;
     }

@@ -39,10 +39,6 @@ public class Rectangle extends Shape {
         return height;
     }
 
-    public Color getColor() {
-        return color;
-    }
-
     public void show(Graphics g) {
         g.setColor(color);
         g.fillRect(x, y, width, height);
